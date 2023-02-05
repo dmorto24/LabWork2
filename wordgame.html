@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+	<style>
+		button{
+			background-color: #f2cd29; 
+			font-size:30px; 
+			border-radius: 8px; 
+			color: white;
+			border:none;
+		}
+		button:hover{
+			background-color: #b59b26;
+			color: white;
+			cursor:pointer;
+		}
+		button:disabled {
+			opacity: 0.6;
+			cursor: not-allowed;
+		}
+	
+	</style>
+	<center>
+	
+	Word Game
+	
+	</center>
+	<script>
+	var temp="";
+	const validWords=['austerer','treasure', 'austere','erasure','rerates','retears','serrate','tearers','ureters',
+	'aretes','arrest','easter','eaters','eraser','rarest','raster','rasure','raters','rerate','reseat','reseau','rester'
+	,'retear','retuse','searer','seater','starer','suerte','tarres','tearer','teaser','terrae','terras','terser','urares'
+	,'urates','urease','ureter','arete','aster','aures','easer','eater','erase','ester','rares','raser','rater','rates'
+	,'rears','reest','resat','reset','reuse','ruers','saree','saute','serer','setae','stare','steer','stere','surer'
+	,'surra','sutra','tares','tarre','tarse','taser','tears','tease','teres','terra','terre','terse','trees','truer'
+	,'trues','urare','urase','urate','ureas','ursae','ares','arre','arse','arte','arts','ates','ears','ease','east'
+	,'eats','eras','erat','errs','erst','etas','etre','rare','rase','rate','rats','rear','rees','rest','rete','rets'
+	,'reus','ruer','rues','rusa','ruse','rust','ruts','sate','sear','seat','seer','sera','sere','seta','star','suer'
+	,'suet','sura','sure','tare','tars','tase','taus','tear','teas','tees','tree','true','tsar','turs','urea','ursa'
+	,'user','utas','utes','aes','are','ars','art','ate','ats','ear','eat','eau','eer','era','ere','err','ers','ese'
+	,'eta','ras','rat','rea','ree','res','ret','rue','rus','rut','sae','sat','sau','sea','see','ser','set','sue','tae'
+	,'tar','tas','tau','tea','tee','tra','tur','use','uta','ute','uts','ae','ar','as','at','ee','er','es','et','re'
+	,'ta','te','us','ut'];
+
+	function spell(c,id){
+		temp+=c;
+		document.getElementById(id).disabled = true;
+	}
+	function addWord(){
+		if(validWords.includes(temp.toLowerCase())==true){
+			var p = document.createElement("p");
+			p.style.textAlign="center";
+			var text = document.createTextNode(temp);
+			p.appendChild(text);
+			document.body.appendChild(p);
+			temp="";
+			document.getElementById('T').disabled = false;
+			document.getElementById('R1').disabled = false;
+			document.getElementById('E1').disabled = false;
+			document.getElementById('A').disabled = false;
+			document.getElementById('S').disabled = false;
+			document.getElementById('U').disabled = false;
+			document.getElementById('R2').disabled = false;
+			document.getElementById('E2').disabled = false;
+		}else{
+			alert("ERROR INVALID WORD! Please try again.");	
+			temp="";
+			document.getElementById('T').disabled = false;
+			document.getElementById('R1').disabled = false;
+			document.getElementById('E1').disabled = false;
+			document.getElementById('A').disabled = false;
+			document.getElementById('S').disabled = false;
+			document.getElementById('U').disabled = false;
+			document.getElementById('R2').disabled = false;
+			document.getElementById('E2').disabled = false;
+		}	
+	}
+	
+	</script>
+	</head>
+	<body style= "font-family: arial,sans-serif; background-color:#3a4070; color:#fcffff; font-size:40px">
+	<br>
+	<table style="border-collapse: collapse; style= font-family: arial,sans-serif" align="center" cellpadding="5px">
+	<tr>
+		<td><button name="T" id = "T" onclick="spell('T','T')">T</button></td>
+		<td><button name="R" id = "R1" onclick="spell('R','R1')">R</button></td>
+		<td><button name="E" id = "E1" onclick="spell('E','E1')">E</button></td>
+		<td><button name="A" id = "A" onclick="spell('A','A')">A</button></td>
+		<td><button name="S" id = "S" onclick="spell('S','S')">S</button></td>
+		<td><button name="U" id = "U" onclick="spell('U','U')">U</button></td>
+		<td><button name="R" id = "R2" onclick="spell('R','R2')">R</button></td>
+		<td><button name="E" id = "E2" onclick="spell('E','E2')">E</button></td>
+	</tr>
+	<tr>
+		<td colspan = "8" align='center'><button style="background-color: #0ee36e; color:white; font-size:20px; border-radius: 8px;"  name="enter" id="enter" onclick= "addWord()"> Click here to form new word</button></td>
+	</body>
+</html>
